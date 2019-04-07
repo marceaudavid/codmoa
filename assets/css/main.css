@@ -4,6 +4,10 @@ body {
   height: 100%;
 }
 
+.columns {
+  margin-bottom: 200px;
+}
+
 .container {
   margin-top: 100px;
   margin-bottom: 100px;

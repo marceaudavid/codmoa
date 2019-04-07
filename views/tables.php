@@ -20,6 +20,16 @@ if (isset($_POST["table"])) {
   $query = "CREATE TABLE " . $_POST["table"] . "($body)";
   // $db->query($query);
 }
+
+if (isset($_POST["target"])) {
+  $path = [
+    "from" => $_FILES['upload']['tmp_name'],
+    "to" => realpath(__DIR__ . "/../data/") . "/data.csv"
+  ];
+  move_uploaded_file($path["from"], $path["to"]);
+  $query = "COPY " . "base." . $_POST["target"] . " FROM '" . $path["to"] . "' NULL as 'NULL' ESCAPE ''' DELIMITER ';' CSV HEADER";
+  $db->query($query);
+}
 ?>
 <?php require "partials/header.php"; ?>
 <div class="container">
@@ -29,7 +39,7 @@ if (isset($_POST["table"])) {
     </div>
   </div>
   <?php foreach ($res as $row): ?>
-  <div class="columns is-multiline">
+  <div class="columns is-multiline separator">
     <div class="column is-three-fifths is-offset-one-fifth">
       <a href="/views/table.php?id=<?= $row["table_name"] ?>">
         <div class="box">
@@ -93,12 +103,47 @@ if (isset($_POST["table"])) {
       </form>
     </div>
   </div>
-  <script>
-  document.getElementById("add").addEventListener("click", function() {
-    const form = document.getElementById("form");
-    const row = document.getElementById("row");
-    const el = row.cloneNode(true);
-    form.append(el);
-  });
-  </script>
-  <?php require "partials/footer.php"; ?>
+  <div class="columns is-multiline">
+    <div class="column is-three-fifths is-offset-one-fifth">
+      <h1 class="title">Upload Data</h1>
+      <form action="/views/tables.php" method="POST" enctype="multipart/form-data">
+        <div id="form">
+          <div id="row" class="field is-horizontal">
+            <div class="field-body">
+              <div class="field">
+                <input class="input" type="text" placeholder="Table Name" name="target" required>
+              </div>
+              <div class="field">
+                <div class="file">
+                  <label class="file-label">
+                    <input class="file-input" type="file" name="upload" accept="text/csv" required>
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                      </span>
+                      <span class="file-label">
+                        Choose a .csv file
+                      </span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <button class="button is-link">Upload</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+document.getElementById("add").addEventListener("click", function() {
+  const form = document.getElementById("form");
+  const row = document.getElementById("row");
+  const el = row.cloneNode(true);
+  form.append(el);
+});
+</script>
+<?php require "partials/footer.php"; ?>

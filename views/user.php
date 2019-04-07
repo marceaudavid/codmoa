@@ -6,8 +6,10 @@ require __DIR__ . "/../database/Database.php";
 $db = new Database($_SESSION['dbname'], $_SESSION['user'], $_SESSION['password']);
 $db->connect();
 $id = $_GET['id'];
-$res = $db->query("SELECT * FROM pg_catalog.pg_user WHERE usename='$id'");
+$res = $db->query("SELECT grantee,table_catalog,table_schema,table_name,privilege_type FROM information_schema.role_table_grants WHERE grantee='$id'");
 ?>
 <?php require "partials/header.php"; ?>
-<pre><?php var_dump($res); ?></pre>
+<?php foreach ($res as $row): ?>
+<pre><?php print_r($row); ?></pre>
+<?php endforeach; ?>
 <?php require "partials/footer.php"; ?>

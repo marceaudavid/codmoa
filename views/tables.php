@@ -8,6 +8,7 @@ require __DIR__ . "/../database/Database.php";
 
 $db = new Database($_SESSION['dbname'], $_SESSION['user'], $_SESSION['password']);
 $db->connect();
+$title = "Codmoa: tables";
 $res = $db->query("SELECT table_catalog,table_name,table_schema,table_type FROM information_schema.tables WHERE table_schema!='information_schema' AND table_schema!='pg_catalog'");
 
 if (isset($_POST["table"])) {

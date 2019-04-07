@@ -12,7 +12,7 @@
 
   <body>
     <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
+      <div class="navbar-start">
         <a class="navbar-item" href="/views/schemas.php">
           Schemas
         </a>
@@ -22,5 +22,14 @@
         <a class="navbar-item" href="/views/users.php">
           Users
         </a>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a href="/index.php?logout" class="button is-primary">
+              <strong>Logout</strong>
+            </a>
+          </div>
+        </div>
       </div>
     </nav>

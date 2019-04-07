@@ -5,6 +5,7 @@ require __DIR__ . "/../database/Database.php";
 
 $db = new Database($_SESSION['dbname'], $_SESSION['user'], $_SESSION['password']);
 $db->connect();
+$title = "Codmoa: users";
 $res = $db->query("SELECT * FROM pg_catalog.pg_user");
 if (isset($_POST["username"])) {
   $query = "CREATE USER " . $_POST["username"] . " WITH " . $_POST['encrypt'] . " PASSWORD '" . $_POST["password"] . "' " . $_POST['db'] . " " . $_POST['user'];

@@ -1,18 +1,20 @@
 <?php
 session_start();
+if (!isset($_SESSION['dbname']) && !isset($_SESSION['user']) && !isset($_SESSION['password'])) {
+  header('Location: /');
+}
 
 require __DIR__ . "/../database/Database.php";
 
 $db = new Database($_SESSION['dbname'], $_SESSION['user'], $_SESSION['password']);
 $db->connect();
+$title = "Codmoa: schemas";
 $res = $db->query("SELECT schema_name,catalog_name,schema_owner FROM information_schema.schemata");
 
 if (isset($_POST["schema"])) {
-  var_dump($_POST);
   $schema = htmlentities($_POST["schema"]);
-  $query = "CREATE SCHEMA IF NOT EXISTS " . $schema . " AUTHORIZATION " . $_SESSION["user"];
-  var_dump($query);
-  // $db->query($query);
+  $query = "CREATE SCHEMA " . $schema . " AUTHORIZATION " . $_SESSION["user"];
+  $db->query($query);
 }
 ?>
 <?php require "partials/header.php"; ?>

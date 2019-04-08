@@ -42,7 +42,7 @@ if (isset($_POST["target"])) {
   <?php foreach ($res as $row): ?>
   <div class="columns is-multiline separator">
     <div class="column is-three-fifths is-offset-one-fifth">
-      <a href="/views/table.php?id=<?= $row["table_name"] ?>">
+      <a href="/views/table.php?id=<?= $row["table_name"] ?>&schema=<?= $row["table_schema"] ?>">
         <div class="box">
           <span><?= $row["table_name"] ?></span>
           <span class="icon is-small">

@@ -34,4 +34,16 @@ class Database
     $res = $query->fetchAll();
     return $res;
   }
+
+  public function getColumnsName(string $query)
+  {
+    $query = $this->pdo->prepare($query);
+    $query->execute();
+    $res = $query->fetchAll();
+    for ($i = 0; $i < $query->columnCount(); $i++) {
+      $col = $query->getColumnMeta($i);
+      $columns[] = $col['name'];
+    }
+    return $columns;
+  }
 }

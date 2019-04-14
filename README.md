@@ -13,8 +13,4 @@ git clone https://github.com/marceaudavid/codmoa.git
 cd codmoa
 ```
 
-Then run :
-
-```bash
-php -S localhost:8080
-```
+Then go to : `http://localhost/codmoa`

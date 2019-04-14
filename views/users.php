@@ -8,7 +8,10 @@ $db->connect();
 $title = "Codmoa: users";
 $res = $db->query("SELECT * FROM pg_catalog.pg_user");
 if (isset($_POST["username"])) {
-  $query = "CREATE USER " . $_POST["username"] . " WITH " . $_POST['encrypt'] . " PASSWORD '" . $_POST["password"] . "' " . $_POST['db'] . " " . $_POST['user'];
+  $createdb = $_POST['db'] === "CREATEDB" ? "CREATEDB" : "";
+  $createuser = $_POST['user'] === "CREATEUSER" ? "CREATEUSER" : "";
+  $query = "CREATE USER " . $_POST["username"] . " WITH ENCRYPTED PASSWORD '" . $_POST["password"] . "' " . $createdb . "  " . $createuser;
+  $db->query($query);
 }
 ?>
 <?php require "partials/header.php"; ?>
@@ -17,7 +20,8 @@ if (isset($_POST["username"])) {
     <div class="column is-three-fifths is-offset-one-fifth">
       <h1 class="title">Users</h1>
     </div>
-  </div><?php foreach ($res as $row): ?>
+  </div>
+  <?php foreach ($res as $row): ?>
   <div class="columns is-multiline">
     <div class="column is-three-fifths is-offset-one-fifth">
       <a href="/views/user.php?id=<?= $row["usename"] ?>">
@@ -54,14 +58,8 @@ if (isset($_POST["username"])) {
                 </div>
                 <div class="select">
                   <select name="user" required>
-                    <option>NOCREATEUSER</option>
-                    <option>CREATEUSER</option>
-                  </select>
-                </div>
-                <div class="select">
-                  <select name="encrypt" required>
-                    <option>UNENCRYPTED</option>
-                    <option>ENCRYPTED</option>
+                    <option>NOCREATEROLE</option>
+                    <option>CREATEROLE</option>
                   </select>
                 </div>
               </div>

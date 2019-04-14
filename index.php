@@ -30,7 +30,7 @@ if (isset($_GET["logout"])) {
       <div class="columns is-multiline">
         <div class="column is-three-fifths is-offset-one-fifth">
           <h2 class="title"><?= $info ?></h2>
-          <form action="/login" method="POST">
+          <form action="index.php" method="POST">
             <label class="label">Postgres credentials</label>
             <div id="row" class="field is-horizontal">
               <div class="field-body">

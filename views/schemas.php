@@ -9,7 +9,7 @@ require __DIR__ . "/../database/Database.php";
 $db = new Database($_SESSION['dbname'], $_SESSION['user'], $_SESSION['password']);
 $db->connect();
 $title = "Codmoa: schemas";
-$res = $db->query("SELECT schema_name,catalog_name,schema_owner FROM information_schema.schemata");
+$res = $db->query("SELECT schema_name,catalog_name,schema_owner FROM information_schema.schemata WHERE NOT schema_name='information_schema' AND NOT schema_name LIKE 'pg%'");
 
 if (isset($_POST["schema"])) {
   $schema = htmlentities($_POST["schema"]);

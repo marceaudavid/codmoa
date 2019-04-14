@@ -24,7 +24,7 @@ if (isset($_POST["username"])) {
   <?php foreach ($res as $row): ?>
   <div class="columns is-multiline">
     <div class="column is-three-fifths is-offset-one-fifth">
-      <a href="/views/user.php?id=<?= $row["usename"] ?>">
+      <a href="/codmoa/views/user.php?id=<?= $row["usename"] ?>">
         <div class="box">
           <span><?= $row["usename"] ?></span>
           <span class="icon is-small">
@@ -38,7 +38,7 @@ if (isset($_POST["username"])) {
   <div class="columns is-multiline">
     <div class="column is-three-fifths is-offset-one-fifth">
       <h1 class="title">Create new User</h1>
-      <form action="/views/users.php" method="POST">
+      <form action="/codmoa/views/users.php" method="POST">
         <div id="form">
           <div class="field">
             <input class="input" type="text" placeholder="User Name" name="username" required>

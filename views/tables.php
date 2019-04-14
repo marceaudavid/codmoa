@@ -56,7 +56,7 @@ if (isset($_POST["target"])) {
   <div class="columns is-multiline">
     <div class="column is-three-fifths is-offset-one-fifth">
       <h1 class="title">Create New Table</h1>
-      <form action="/views/tables.php" method="POST">
+      <form action="/codmoa/views/tables.php" method="POST">
         <div id="form">
           <div class="field">
             <input class="input" type="text" placeholder="Table Name" name="table" required>
@@ -107,7 +107,7 @@ if (isset($_POST["target"])) {
   <div class="columns is-multiline">
     <div class="column is-three-fifths is-offset-one-fifth">
       <h1 class="title">Upload Data</h1>
-      <form action="/views/tables.php" method="POST" enctype="multipart/form-data">
+      <form action="/codmoa/views/tables.php" method="POST" enctype="multipart/form-data">
         <div id="form">
           <div id="row" class="field is-horizontal">
             <div class="field-body">

@@ -78,7 +78,7 @@ if (isset($_POST[$databases[0]['datname']])) {
   <div class="columns is-multiline">
     <div class="column is-three-fifths is-offset-one-fifth">
       <h1 class="title">Database</h1>
-      <form action=<?php echo "/views/user.php?id=$id"; ?> method="POST">
+      <form action=<?php echo "/codmoa/views/user.php?id=$id"; ?> method="POST">
         <table class="table is-narrow is-bordered">
           <tbody>
             <tr>
@@ -110,7 +110,7 @@ if (isset($_POST[$databases[0]['datname']])) {
         </div>
       </form>
       <h1 class="title">Schemas</h1>
-      <form action=<?php echo "/views/user.php?id=$id"; ?> method="POST">
+      <form action=<?php echo "/codmoa/views/user.php?id=$id"; ?> method="POST">
         <table class="table is-narrow is-bordered">
           <tbody>
             <tr>
@@ -142,7 +142,7 @@ if (isset($_POST[$databases[0]['datname']])) {
         </div>
       </form>
       <h1 class="title">Tables</h1>
-      <form action=<?php echo "/views/user.php?id=$id"; ?> method="POST">
+      <form action=<?php echo "/codmoa/views/user.php?id=$id"; ?> method="POST">
         <table class="table is-narrow is-bordered">
           <tbody>
             <tr>

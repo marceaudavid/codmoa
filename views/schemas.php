@@ -26,7 +26,7 @@ if (isset($_POST["schema"])) {
   </div><?php foreach ($res as $row): ?>
   <div class="columns is-multiline">
     <div class="column is-three-fifths is-offset-one-fifth">
-      <a href="/views/schema.php?id=<?= $row["schema_name"] ?>">
+      <a href="/codmoa/views/schema.php?id=<?= $row["schema_name"] ?>">
         <div class="box">
           <span><?= $row["schema_name"] ?></span>
           <span class="icon is-small">
@@ -40,7 +40,7 @@ if (isset($_POST["schema"])) {
   <div class="columns is-multiline">
     <div class="column is-three-fifths is-offset-one-fifth">
       <h1 class="title">Create new Schema</h1>
-      <form action="/views/schemas.php" method="POST">
+      <form action="/codmoa/views/schemas.php" method="POST">
         <div id="form">
           <div class="field">
             <input class="input" type="text" placeholder="Schema Name" name="schema" required>

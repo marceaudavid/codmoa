@@ -5,7 +5,7 @@ if (isset($_POST["dbname"])) {
   $_SESSION['dbname'] = $_POST['dbname'];
   $_SESSION['user'] = $_POST['user'];
   $_SESSION['password'] = $_POST['password'];
-  header("Location: /views/tables.php");
+  header("Location: /codmoa/views/tables.php");
 }
 if (isset($_GET["logout"])) {
   session_destroy();

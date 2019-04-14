@@ -6,7 +6,7 @@ Codmoa is a school project which aims to provide a UI to manage a PostgreSQL dat
 
 ## Usage
 
-Make sure git and php are installed on your computer. Then you can clone this repository :
+Make sure git, php and apache are installed on your computer. Then you can clone this repository in your apache sites directory :
 
 ```bash
 git clone https://github.com/marceaudavid/codmoa.git
